@@ -10,11 +10,8 @@ _ft_isascii:
 
 .true:
 	mov rax, 1
-	jmp .end
+	ret
 
 .false:
 	mov rax, 0
-	jmp .end
-
-.end:
 	ret
