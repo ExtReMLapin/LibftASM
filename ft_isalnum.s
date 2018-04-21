@@ -2,17 +2,17 @@ section .text
 	global _ft_isalnum
 
 _ft_isalnum:
-	cmp rdi, 48 ; avant 0 = fail
+	cmp rdi, '0' ; avant 0 = fail
 	jl .false
-	cmp rdi, 58 ; avant 9 + 1 = success
+	cmp rdi, ':' ; avant 9 + 1 = success
 	jl .true
-	cmp rdi, 65 ; etc
+	cmp rdi, 'A' ; etc
 	jl .false
-	cmp rdi, 91
+	cmp rdi, '['
 	jl .true
-	cmp rdi, 97
+	cmp rdi, 'a'
 	jl .false
-	cmp rdi, 123
+	cmp rdi, '{'
 	jl .true
 	jmp .false ; sinon, rip false gros
 

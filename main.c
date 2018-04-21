@@ -1,41 +1,41 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
 
-int ft_isascii(int c);
-int ft_isdigit(int c);
-int ft_isalnum(int c);
-void ft_bzero(void *s, size_t n);
-int	ft_strlen(const char *s);
+int _ft_isascii(int c);
+int _ft_isdigit(int c);
+int _ft_isalnum(int c);
+void _ft_bzero(void *s, size_t n);
+int	_ft_strlen(const char *s);
+int	_ft_isprint(int c);
+
+#define min -5000
+#define max 1300
 
 int main(void)
 {
-	printf("isascii -1 %i\n", ft_isascii(-1));
-	printf("isascii 4 %i\n", ft_isascii(4));
-	printf("isascii 120 %i\n", ft_isascii(120));
-	printf("isascii 128 %i\n", ft_isascii(128));
-
-	printf("isdigit a %i\n", ft_isdigit('a'));
-	printf("isdigit B %i\n", ft_isdigit('B'));
-	printf("isdigit 0 %i\n", ft_isdigit('0'));
-	printf("isdigit 9 %i\n", ft_isdigit('9'));
-	printf("isdigit 5 %i\n", ft_isdigit('5'));
-
-	printf("isalnum a %i\n", ft_isalnum('a'));
-	printf("isalnum B %i\n", ft_isalnum('B'));
-	printf("isalnum 0 %i\n", ft_isalnum('0'));
-	printf("isalnum 9 %i\n", ft_isalnum('9'));
-	printf("isalnum 5 %i\n", ft_isalnum('5'));
-	printf("isalnum / %i\n", ft_isalnum('/'));
-	printf("isalnum ! %i\n", ft_isalnum('!'));
-
-	char d[] = "raaaa";
-
-	printf("%s\n", d);
-
-	ft_bzero(d, strlen(d));
-	printf("%i\n", ft_strlen("lol425"));
 
 
+
+	int i = min;
+	while (i < max)
+	{
+		if ((bool)isascii(i) != (bool)_ft_isascii(i))
+			printf("Fail on ft_isascii(%i) expected : 0x%08x  but got 0x%08x \n", i, (bool)isascii(i) , (bool)_ft_isascii(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isascii");
+
+
+	i = min;
+	while (i < max)
+	{
+		if ((bool)isprint(i) != (bool)_ft_isprint(i))
+			printf("Fail on ft_isprint(%i) expected : 0x%08x  but got 0x%08x \n", i, isprint(i) , _ft_isprint(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isprint");
 
 	return (1);
 }
