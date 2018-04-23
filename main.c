@@ -30,44 +30,21 @@ int main(void)
 
 	int i;
 
-	i = min;
-	while (i < max)
-	{
-		if (isascii(i) != ft_isascii(i))
-			printf("\e[31mFail on ft_isascii(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isascii(i) , ft_isascii(i));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_isascii");
 
 
-	i = min;
-	while (i < max)
-	{
-		if (isdigit(i) != ft_isdigit(i))
-			printf("\e[31mFail on ft_isdigit(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isdigit(i) , ft_isdigit(i));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_isdigit");
-
-	i = min;
-	while (i < max)
-	{
-		if (isalnum(i) != ft_isalnum(i))
-			printf("\e[31mFail on ft_isalnum(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isalnum(i) , ft_isalnum(i));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_isalnum");
 
 
-	char str[] = "QUEQU'UN AURAIT VU MA BROSSE A DENTS SVP ????";
-	char str2[] = "QUEQU'UN AURAIT VU MA BROSSE A DENTS SVP ????";
+	////////////////////////////////STRCAT//////////////////////////////
+
+	char str[] = "zzzzzZdfsZdasdfafsdfagdf sdfZgs dfgs dfgsdfgZZZZZZZZgs dfgZsdfg sdfsdgfgsdfgjfghjf6gh54654  ZZZ654 fg6s4f65g 4sdf56gZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+	char str2[] = "zzzzzZdfsZdasdfafsdfagdf sdfZgs dfgs dfgsdfgZZZZZZZZgs dfgZsdfg sdfsdgfgsdfgjfghjf6gh54654  ZZZ654 fg6s4f65g 4sdf56gZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 	i = strlen(str);
 	int i2 = i;
-	str[10] = '\0';
-	str2[10] = '\0';
+	str[35]= '\0';
+	str2[35] = '\0';
 
-	char *_str = strcat(str, "_");
-	char *_str2 = ft_strcat(str2, "_");
+	char *_str = strcat(str, "fsdfdfasdfa");
+	char *_str2 = ft_strcat(str2, "fsdfdfasdfa");
 
 	bool failed = false; // only print cmp of the two string if it failed
 	while (i--) // not using strcmp because of the NULL char at pos 5
@@ -91,7 +68,70 @@ int main(void)
 		write(1, "\n", 1);
 	}
 
-	printf("%s\n", "Finished test for strcat");
+	printf("%s\n", "Finished test for ft_strcat");
+
+	////////////////////////////// ISALPHA//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isalpha(i) != ft_isalpha(i))
+			printf("\e[31mFail on ft_isalpha(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isalpha(i) , ft_isascii(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isalpha");
+
+
+	////////////////////////////////ISDIGIT///////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isdigit(i) != ft_isdigit(i))
+			printf("\e[31mFail on ft_isdigit(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isdigit(i) , ft_isdigit(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isdigit");
+
+
+		//////////////////////////////////ISALNUM///////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isalnum(i) != ft_isalnum(i))
+			printf("\e[31mFail on ft_isalnum(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isalnum(i) , ft_isalnum(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isalnum");
+
+	////////////////////////////// ISASCII//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isascii(i) != ft_isascii(i))
+			printf("\e[31mFail on ft_isascii(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isascii(i) , ft_isascii(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isascii");
+
+
+	////////////////////////////// ISPRINT//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isprint(i) != ft_isprint(i))
+			printf("\e[31mFail on ft_isprint(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isprint(i) , ft_isprint(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isprint");
+
+
+
+
+
+
+
+
+
+
 
 	return (1);
 }
