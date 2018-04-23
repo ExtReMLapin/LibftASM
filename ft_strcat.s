@@ -45,7 +45,6 @@ _ft_strcat:
 	jmp .lpmain
 
 .end:
-	mov cl, 0				;	s1[i] = '\0';
-	mov [rdi+rax], cl		
+	mov byte [rdi+rax], 0		
 	mov rax, rdi			;	return (s1);
 	ret
