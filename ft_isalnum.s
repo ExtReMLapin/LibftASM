@@ -17,7 +17,7 @@ _ft_isalnum:
 	jmp .false ; sinon, rip false gros
 
 .true:
-	mov rax, rdi
+	mov rax, 1
 	ret
 
 .false:
