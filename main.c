@@ -20,21 +20,92 @@ int ft_tolower(int c);
 int ft_isupper(int c);
 int ft_islower(int c);
 
-
 int	ft_strlen(const char *s);
 
 
 #define min -21474836
 #define max 21474836
 
+#ifdef __linux__ // c dégeu mé osef
+	void _ft_bzero(void *s, size_t n);
+	char *_ft_strcat(char *restrict s1, const char *restrict s2);
+	int _ft_isalpha(int c);
+	int _ft_isdigit(int c);
+	int _ft_isalnum(int c);
+	int _ft_isascii(int c);
+	int	_ft_isprint(int c);
+	int _ft_toupper(int c);
+	int _ft_tolower(int c);
+	int _ft_isupper(int c);
+	int _ft_islower(int c);
+
+	int	ft_strlen(const char *s);
+
+	void ft_bzero(void *s, size_t n)
+	{
+		return _ft_bzero(s, n);
+	}
+
+	char *ft_strcat(char *restrict s1, const char *restrict s2)
+	{
+		return (_ft_strcat(s1, s2));
+	}
+
+	int ft_isalpha(int c)
+	{
+		return (_ft_isalpha(c));
+	}
+
+	int ft_isdigit(int c)
+	{
+		return (_ft_isdigit(c));
+	}
+
+	int ft_isalnum(int c)
+	{
+		return (_ft_isalnum(c));
+	}
+
+	int ft_isascii(int c)
+	{
+		return (_ft_isascii(c));
+	}
+
+	int	ft_isprint(int c)
+	{
+		return (_ft_isprint(c));
+	}
+
+	int ft_toupper(int c)
+	{
+		return (_ft_toupper(c));
+	}
+
+	int ft_tolower(int c)
+	{
+		return (_ft_tolower(c));
+	}
+
+	int ft_isupper(int c)
+	{
+		return (_ft_isupper(c));
+	}
+
+	int ft_islower(int c)
+	{
+		return (_ft_islower(c));
+	}
+#endif
+
+
+
+
+
+
 int main(void)
 {
 
 	int i;
-
-
-
-
 
 	////////////////////////////////STRCAT//////////////////////////////
 
