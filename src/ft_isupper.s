@@ -1,7 +1,7 @@
 section .text
-	global _ft_toupper
+	global _ft_isupper
 
-_ft_toupper:
+_ft_isupper:
 	cmp rdi, 'a'	; if < 'a' then fuck off
 	jl .false
 	cmp rdi, 'z'	; if > 'z' then fuck off

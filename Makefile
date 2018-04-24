@@ -20,6 +20,7 @@ LIB_SRC			=	ft_isdigit.s \
 					ft_isascii.s \
 					ft_bzero.s \
 					ft_strlen.s \
+					ft_strcat.s \
 
 
 LIB_OBJ		= $(LIB_SRC:.s=.o)
