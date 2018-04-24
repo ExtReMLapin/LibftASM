@@ -23,8 +23,8 @@ int ft_islower(int c);
 int	ft_strlen(const char *s);
 
 
-#define min -21474836
-#define max 21474836
+#define min 0
+#define max 128
 
 #ifdef __linux__ // c dégeu mé osef
 	void _ft_bzero(void *s, size_t n);
@@ -147,7 +147,7 @@ int main(void)
 	i = min;
 	while (i < max)
 	{
-		if (isalpha(i) != ft_isalpha(i))
+		if (isalpha(i))
 			printf("\e[31mFail on ft_isalpha(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isalpha(i) , ft_isascii(i));
 		i++;
 	}
@@ -217,6 +217,29 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_toupper");
+
+
+
+
+	//////////////////////////////ISUPPER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isupper(i) != ft_isupper(i))
+			printf("\e[31mFail on ft_isupper(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isupper(i) , ft_isupper(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isupper");
+
+		//////////////////////////////ISLOWER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (islower(i) != ft_islower(i))
+			printf("\e[31mFail on ft_islower(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, islower(i) , ft_islower(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_islower");
 
 
 

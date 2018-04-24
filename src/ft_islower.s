@@ -2,9 +2,9 @@ section .text
 	global _ft_islower
 
 _ft_islower:
-	cmp rdi, 'A'	; if < 'A' then fuck off
+	cmp rdi, 'a'	; if < 'A' then fuck off
 	jl .false
-	cmp rdi, 'Z'	; if > 'Z' then fuck off
+	cmp rdi, 'a'	; if > 'Z' then fuck off
 	jg .false
 	jmp .true
 
