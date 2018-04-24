@@ -17,6 +17,8 @@ int ft_isascii(int c);
 int	ft_isprint(int c);
 int ft_toupper(int c);
 int ft_tolower(int c);
+int ft_isupper(int c);
+int ft_islower(int c);
 
 
 int	ft_strlen(const char *s);
@@ -124,10 +126,26 @@ int main(void)
 	printf("%s\n", "Finished test for ft_isprint");
 
 
+	////////////////////////////// TOLOWER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (tolower(i) != ft_tolower(i))
+			printf("\e[31mFail on ft_tolower(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, tolower(i) , ft_tolower(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_tolower");
 
 
-
-
+	////////////////////////////// TOUPPER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (toupper(i) != ft_toupper(i))
+			printf("\e[31mFail on ft_toupper(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, toupper(i) , ft_toupper(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_toupper");
 
 
 
