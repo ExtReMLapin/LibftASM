@@ -35,7 +35,7 @@ $(NAME): $(LIB_OBJ)
 	ar rc $(NAME) $(LIB_OBJ)
 
 %.o: $(LIB_SRC_DIR)/%.s
-	$(LIN_COMPILER) $< -o $@
+	$(MAC_COMPILER) $< -o $@
 
 clean:
 	rm -rf $(LIB_OBJ) $(PNTF_OBJ)

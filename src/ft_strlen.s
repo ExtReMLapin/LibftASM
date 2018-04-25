@@ -1,18 +1,36 @@
-;size_t	strlen(const char *s);
+; size_t	ft_strlen(const char *s) ;
 
 section .text
 	global _ft_strlen
 
+
 _ft_strlen:
-	mov rbx, rdi		; char *s should be rdi, rbx will be called s2
+					; repne bosse sur rcx
+					; scasb compare al avec rdi et bouge rdi
 
-.loop:
-	cmp byte [rbx], 0	; check if *s2 == '\0'
-	je .end				; if yes then return
-	inc rbx				; *(s2)++
-	jmp .loop			; loop
+					; scasb -> SCan A String Byte
+					; rpne -> RePeat while Not Equal
 
-.end:
-	sub rbx, rdi		; s2 = s2 (which is greater than s) - s
-	mov rax, rbx		; eax is the return value, right ?? and rbx is now the len
-	ret
+					; s = rdi
+    xor rcx, rcx	; rcx = 0 ; on utilise rcx et pas rbx car repne scasb agit dessus
+    cmp rdi, 0x0 	; if (s == NULL)
+    jz end			;	goto end
+    				; juste pour le debut
+
+    not rcx 		; rcx = ~rcx (rcx = -1)
+
+    xor al, al		; al = 0 avant de loouuuupe
+    cld				; faut pas de planter de sens roger
+
+    ; while (*s (al) != '\0') s++; rcx--;
+    repne scasb
+
+    not rcx			; rcx = ~rcx
+    dec rcx			; rcx--
+
+end:
+    ; ret = rcx
+    mov rax, rcx
+    ; return (ret)
+    ret
+    

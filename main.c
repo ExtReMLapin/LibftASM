@@ -8,23 +8,32 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void ft_bzero(void *s, size_t n);
-char *ft_strcat(char *restrict s1, const char *restrict s2);
-int ft_isalpha(int c);
-int ft_isdigit(int c);
-int ft_isalnum(int c);
-int ft_isascii(int c);
-int	ft_isprint(int c);
-int ft_toupper(int c);
-int ft_tolower(int c);
-int ft_isupper(int c);
-int ft_islower(int c);
+/* PART 1 */
+void	ft_bzero(void *s, size_t n);
+char	*ft_strcat(char *restrict s1, const char *restrict s2);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
-int	ft_strlen(const char *s);
+/* PART 2 */
+size_t	ft_strlen(const char *s);
+void	*ft_memset(void *b, int c, size_t len);
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+char	*strdup(const char *s1);
+
+/* PART 3*/
+
+/* BONUS */
+int		ft_isupper(int c);
+int		ft_islower(int c);
 
 
-#define min 0
-#define max 128
+#define min -4660
+#define max 4661
 
 #ifdef __linux__ // c dégeu mé osef
 	void _ft_bzero(void *s, size_t n);
@@ -39,7 +48,10 @@ int	ft_strlen(const char *s);
 	int _ft_isupper(int c);
 	int _ft_islower(int c);
 
-	int	ft_strlen(const char *s);
+	size_t	ft_strlen(const char *s)
+	{
+		return _ft_strlen(s);
+	}
 
 	void ft_bzero(void *s, size_t n)
 	{
@@ -147,7 +159,7 @@ int main(void)
 	i = min;
 	while (i < max)
 	{
-		if (isalpha(i))
+		if (isalpha(i) != ft_isalpha(i))
 			printf("\e[31mFail on ft_isalpha(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isalpha(i) , ft_isascii(i));
 		i++;
 	}
@@ -242,7 +254,8 @@ int main(void)
 	printf("%s\n", "Finished test for ft_islower");
 
 
-
+	char str42[] = "mdrlolcaca";
+	printf("ft_strlen -> %lu %lu %lu\n", strlen(str42), ft_strlen(str42), strlen(str42));
 
 
 	return (1);
