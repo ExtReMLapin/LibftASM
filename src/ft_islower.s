@@ -4,7 +4,7 @@ section .text
 _ft_islower:
 	cmp rdi, 'a'	; if < 'A' then fuck off
 	jl .false
-	cmp rdi, 'a'	; if > 'Z' then fuck off
+	cmp rdi, 'z'	; if > 'Z' then fuck off
 	jg .false
 	jmp .true
 
