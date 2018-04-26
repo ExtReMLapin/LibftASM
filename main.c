@@ -18,7 +18,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-
+4
 /* PART 2 */
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
@@ -34,6 +34,21 @@ int		ft_islower(int c);
 
 #define min -4660
 #define max 4661
+
+static void fill_with_shit(char *str, size_t size)
+{
+        size_t i = 0;
+        while (i < size)
+        {
+                str[i] = 33 + (i*2)%94;
+                i++;
+        }
+        str[i] = 0;
+}
+
+
+
+
 
 #ifdef __linux__ // c dégeu mé osef
 	void _ft_bzero(void *s, size_t n);
@@ -117,12 +132,19 @@ int		ft_islower(int c);
 int main(void)
 {
 
+
+
+
+
+
 	int i;
 
 	////////////////////////////////STRCAT//////////////////////////////
 
-	char str[] = "zzzzzZdfsZdasdfafsdfagdf sdfZgs dfgs dfgsdfgZZZZZZZZgs dfgZsdfg sdfsdgfgsdfgjfghjf6gh54654  ZZZ654 fg6s4f65g 4sdf56gZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
-	char str2[] = "zzzzzZdfsZdasdfafsdfagdf sdfZgs dfgs dfgsdfgZZZZZZZZgs dfgZsdfg sdfsdgfgsdfgjfghjf6gh54654  ZZZ654 fg6s4f65g 4sdf56gZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+	char *str = (char*)malloc(sizeof(char)*501);
+	char *str2 = (char*)malloc(sizeof(char)*501);
+	fill_with_shit(str, 501);
+	fill_with_shit(str2, 501);
 	i = strlen(str);
 	int i2 = i;
 	str[35]= '\0';
@@ -253,9 +275,18 @@ int main(void)
 	}
 	printf("%s\n", "Finished test for ft_islower");
 
+	i = 0;
 
-	char str42[] = "mdrlolcaca";
-	printf("ft_strlen -> %lu %lu %lu\n", strlen(str42), ft_strlen(str42), strlen(str42));
+	while (i < 500)
+	{
+		fill_with_shit(str,i);
+		if (strlen(str) != ft_strlen(str))
+			printf("\e[31mFail on ft_strlen(%i) expected : %lu  but got %lu n\e[0m", i, strlen(str) , ft_strlen(str));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_strlen");
+
+
 
 
 	return (1);
