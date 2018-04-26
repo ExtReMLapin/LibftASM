@@ -10,7 +10,6 @@ _ft_strlen:
 
 					; scasb -> SCan A String Byte
 					; rpne -> RePeat while Not Equal
-
 					; s = rdi
     xor rcx, rcx	; rcx = 0 ; on utilise rcx et pas rbx car repne scasb agit dessus
     cmp rdi, 0x0 	; if (s == NULL)
@@ -19,10 +18,10 @@ _ft_strlen:
 
     not rcx 		; rcx = ~rcx (rcx = -1)
 
-    xor al, al		; al = 0 avant de loouuuupe
+    mov al, 0		; al = 0 avant de loouuuupe psk on cherche 0 dans la string
     cld				; faut pas de planter de sens roger
 
-    ; while (*s (al) != '\0') s++; rcx--;
+    ; while (*s  != (al)) s++; rcx--;
     repne scasb
 
     not rcx			; rcx = ~rcx
