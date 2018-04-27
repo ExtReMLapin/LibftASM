@@ -18,12 +18,12 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-4
+
 /* PART 2 */
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
-char	*strdup(const char *s1);
+char	*ft_strdup(const char *s1);
 
 /* PART 3*/
 
@@ -127,6 +127,22 @@ static void fill_with_shit(char *str, size_t size)
 
 
 
+void checkintegrity(char *str1, char* str2, int testid)
+{
+	int i = 0;
+	while (i < 500)
+	{
+		if (str1[i] != str2[i])
+		{
+			printf("Integrity Fail for text #%i on char #%i\n", testid, i);
+			break;
+		}
+		i++;
+	}
+
+}
+
+
 
 
 int main(void)
@@ -176,6 +192,7 @@ int main(void)
 	}
 
 	printf("%s\n", "Finished test for ft_strcat");
+	checkintegrity(str, str2, 1);
 
 	////////////////////////////// ISALPHA//////////////////////////////
 	i = min;
@@ -186,7 +203,7 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_isalpha");
-
+	checkintegrity(str, str2, 2);
 
 	////////////////////////////////ISDIGIT///////////////////////////////
 	i = min;
@@ -198,7 +215,7 @@ int main(void)
 	}
 	printf("%s\n", "Finished test for ft_isdigit");
 
-
+	checkintegrity(str, str2, 3);
 		//////////////////////////////////ISALNUM///////////////////////////
 	i = min;
 	while (i < max)
@@ -208,7 +225,7 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_isalnum");
-
+	checkintegrity(str, str2, 4);
 	////////////////////////////// ISASCII//////////////////////////////
 	i = min;
 	while (i < max)
@@ -219,7 +236,7 @@ int main(void)
 	}
 	printf("%s\n", "Finished test for ft_isascii");
 
-
+	checkintegrity(str, str2, 5);
 	////////////////////////////// ISPRINT//////////////////////////////
 	i = min;
 	while (i < max)
@@ -230,7 +247,7 @@ int main(void)
 	}
 	printf("%s\n", "Finished test for ft_isprint");
 
-
+	checkintegrity(str, str2, 6);
 	////////////////////////////// TOLOWER//////////////////////////////
 	i = min;
 	while (i < max)
@@ -240,7 +257,7 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_tolower");
-
+	checkintegrity(str, str2, 7);
 
 	////////////////////////////// TOUPPER//////////////////////////////
 	i = min;
@@ -251,7 +268,7 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_toupper");
-
+	checkintegrity(str, str2, 8);
 
 
 
@@ -264,8 +281,9 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_isupper");
+	checkintegrity(str, str2, 9);
 
-		//////////////////////////////ISLOWER//////////////////////////////
+	//////////////////////////////ISLOWER//////////////////////////////
 	i = min;
 	while (i < max)
 	{
@@ -274,19 +292,83 @@ int main(void)
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_islower");
+	checkintegrity(str, str2, 10);
 
+
+	//////////////////////////////STRLEN//////////////////////////////
 	i = 0;
 
 	while (i < 500)
 	{
 		fill_with_shit(str,i);
+		fill_with_shit(str2,i); // only used for integrity
 		if (strlen(str) != ft_strlen(str))
 			printf("\e[31mFail on ft_strlen(%i) expected : %lu  but got %lu n\e[0m", i, strlen(str) , ft_strlen(str));
 		i++;
 	}
 	printf("%s\n", "Finished test for ft_strlen");
+	checkintegrity(str, str2, 11);
+
+	//////////////////////////////MEMSET//////////////////////////////
+	i = 2;
+
+			fill_with_shit(str,500);
+		fill_with_shit(str2,500);
+
+	while (i < 127)
+	{
+
+		memset((void*)str, i/2, i/2);
+		memset((void*)str2, i/2, i/2);
+
+		int ibite = 0;
+		while (ibite < i)
+		{
+			if (str[ibite] != str2[ibite])
+			{
+				failed = true;
+				printf("\e[31mMemset failed on char #%i expected %c but got %c\n\e[0m",ibite, str[ibite], str2[ibite] );
+			}
+			ibite++;
+		}
 
 
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_memset");
+	checkintegrity(str, str2, 12);
+
+	//////////////////////////////MEMCPYU//////////////////////////////
+	i = 10;
+
+		fill_with_shit(str,500);
+		fill_with_shit(str2,500);
+		char bite[] = "sdfjas;dfjas; dfjasdkfaj sd;fasd.cas;l asdf apeuw89e4ry twero97tqe9rfhqlsd;adf/a.sdfa sdWDWEF ";
+		int max1 = strlen(bite);
+
+	while (i < max1)
+	{
+
+
+		memcpy(str, bite, i);
+		ft_memcpy(str2, bite, i);
+
+		int ibite = 0;
+		while (ibite < i)
+		{
+			if (str[ibite] != str2[ibite])
+			{
+				failed = true;
+				printf("\e[31mMemcpy failed on char #%i expected %c but got %c\n\e[0m",ibite, str[ibite], str2[ibite] );
+			}
+			ibite++;
+		}
+
+		i++;
+
+	}
+	printf("%s\n", "Finished test for ft_memcpy");
+	checkintegrity(str, str2, 13);
 
 
 	return (1);

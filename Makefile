@@ -21,6 +21,8 @@ LIB_SRC			=	ft_isdigit.s \
 					ft_bzero.s \
 					ft_strlen.s \
 					ft_strcat.s \
+					ft_memset.s \
+					ft_memcpy.s
 
 
 LIB_OBJ		= $(LIB_SRC:.s=.o)
