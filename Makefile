@@ -1,9 +1,9 @@
 
 NAME			= libftasm.a
 
-LIN_COMPILER	= nasm -f elf64
+LIN_COMPILER	= nasm -f elf64 -g 
 
-MAC_COMPILER	= nasm -f macho64
+MAC_COMPILER	= nasm -f macho64 -g 
 
 CC_FLAGS		= -Wall -Werror -Wextra
 
@@ -22,7 +22,8 @@ LIB_SRC			=	ft_isdigit.s \
 					ft_strlen.s \
 					ft_strcat.s \
 					ft_memset.s \
-					ft_memcpy.s
+					ft_memcpy.s \
+					ft_strdup.s
 
 
 LIB_OBJ		= $(LIB_SRC:.s=.o)
