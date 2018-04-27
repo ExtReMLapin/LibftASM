@@ -166,6 +166,9 @@ int main(void)
 	str[35]= '\0';
 	str2[35] = '\0';
 
+
+
+
 	char *_str = strcat(str, "fsdfdfasdfa");
 	char *_str2 = ft_strcat(str2, "fsdfdfasdfa");
 
@@ -312,7 +315,7 @@ int main(void)
 	//////////////////////////////MEMSET//////////////////////////////
 	i = 2;
 
-			fill_with_shit(str,500);
+		fill_with_shit(str,500);
 		fill_with_shit(str2,500);
 
 	while (i < 127)
@@ -338,7 +341,7 @@ int main(void)
 	printf("%s\n", "Finished test for ft_memset");
 	checkintegrity(str, str2, 12);
 
-	//////////////////////////////MEMCPYU//////////////////////////////
+	//////////////////////////////MEMCPY//////////////////////////////
 	i = 10;
 
 		fill_with_shit(str,500);
@@ -370,6 +373,20 @@ int main(void)
 	printf("%s\n", "Finished test for ft_memcpy");
 	checkintegrity(str, str2, 13);
 
+	//////////////////////////////STRDUP//////////////////////////////
+	char ololmdr[] = "QUELAUN AURAY VU MA BROSS A DEN?????????????????";
+	printf("%s\n","step 1");
+	char *bitoe = ft_strdup(ololmdr);
+	printf("%s\n","step 1.2");
+	if (strcmp(strdup(ololmdr), bitoe) != 0)
+		printf("%s\n", "fail sur ft_strdup");
+	printf("%s\n","step 2");
+	if (bitoe[strlen(ololmdr)] != 0)
+		printf("%s %c\n", "end of it is not 0, expected 0, got ", bitoe[strlen(ololmdr)]);
+	printf("%s\n","step 3");
+	printf("%s\n", "Finished test for ft_strdup");
+
+	printf("%lu %lu\n",ft_strlen(bitoe), ft_strlen(bitoe) );
 
 	return (1);
 }
