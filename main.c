@@ -22,7 +22,7 @@ char* 	ft_puts( char* rdi);
 
 /* PART 2 */
 size_t	ft_strlen(const char *s);
-size_t	ft_strlen2(const char *s);
+
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 char	*ft_strdup(const char *s1);
@@ -32,10 +32,12 @@ char	*ft_strdup(const char *s1);
 /* BONUS */
 int		ft_isupper(int c);
 int		ft_islower(int c);
+size_t	ft_strlen2(const char *s); // ?
 
 
-#define min -460
+
 #define max 401
+#define min -max
 
 /*
 ** On linux (or at least bash for windows with ubuntu), the libc does segfault with non chars even if man says it can takes int
@@ -405,11 +407,24 @@ int main(void)
 	
 		i++;
 	}
+
+
+
 	printf("%s\n", "Finished test for ft_strdup");
+	printf("%s\n", "Les lignes suivantes sont-elles identiques ?");
+	char olol[] = "mdr                                                                     ";
+	puts(olol);
+	ft_puts(olol);
 
-	//ft_puts("lol mdr");
+	char olol2[] = "sdfjsdfj;asdfja;sdjfapiwejfp[iwejfpad;zsdz;'sdcz's;dfasdf4asd89fa4ds+fasdf";
+	puts(olol2);
+	ft_puts(olol2);
 
-	char b[] = "lol";
-	ft_puts(b);
+
+		char *olol5 = NULL;
+		puts(olol5);
+	ft_puts(olol5);
+
+
 	return (1);
 }
