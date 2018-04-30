@@ -5,8 +5,6 @@ LIN_COMPILER	= nasm -f elf64 -g
 
 MAC_COMPILER	= nasm -f macho64 -g 
 
-CC_FLAGS		= -Wall -Werror -Wextra
-
 LIB_SRC_DIR		= ./src
 
 LIB_SRC			=	ft_isdigit.s \
@@ -20,10 +18,12 @@ LIB_SRC			=	ft_isdigit.s \
 					ft_isascii.s \
 					ft_bzero.s \
 					ft_strlen.s \
+					ft_strlen2.s \
 					ft_strcat.s \
 					ft_memset.s \
 					ft_memcpy.s \
-					ft_strdup.s
+					ft_strdup.s \
+					ft_puts.s
 
 
 LIB_OBJ		= $(LIB_SRC:.s=.o)
@@ -41,12 +41,17 @@ $(NAME): $(LIB_OBJ)
 	$(MAC_COMPILER) $< -o $@
 
 clean:
-	rm -rf $(LIB_OBJ) $(PNTF_OBJ)
+	rm -rf $(LIB_OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf test
 
 re: fclean 
 	$(MAKE) all
 
-.PHONY: all clean fclean re
+test:
+	clang main.c $(NAME) -o test
+
+
+.PHONY: all clean fclean re test
