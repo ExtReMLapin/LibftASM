@@ -40,7 +40,7 @@ _ft_puts:
 	;priting the string sent as parameter
 	mov rdi, 1			
 	mov rdx, 6			; rdx = string length that was in parameter
-	mov rsi, NULLSTR	; rsi = string that was in ft_puts parameter
+	lea rsi, [rel NULLSTR]	; rsi = string that was in ft_puts parameter
 	call _write			; write(1, str, strlen(str))
 
 	;now adding a \n at the and of the string
