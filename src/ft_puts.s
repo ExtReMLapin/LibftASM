@@ -49,6 +49,6 @@ _ft_puts:
 	mov rsi, NL			; rsi = string that was in ft_puts parameter
 	call _write			; write(1, str, strlen(str))
 
-	mov rax, -1
+	mov rax, 10 ; bah voila on doit reproduire le meme comportement donc voila
 	leave
 	ret

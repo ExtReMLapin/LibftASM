@@ -421,9 +421,8 @@ int main(void)
 	ft_puts(olol2);
 
 
-		char *olol5 = NULL;
-		puts(olol5);
-	ft_puts(olol5);
+	char *olol5 = NULL;
+		printf(	" %i %i \n", puts(olol5) ,ft_puts(olol5));
 
 
 	return (1);
