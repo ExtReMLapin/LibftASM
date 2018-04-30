@@ -18,9 +18,11 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+char* 	ft_puts( char* rdi);
 
 /* PART 2 */
 size_t	ft_strlen(const char *s);
+size_t	ft_strlen2(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 char	*ft_strdup(const char *s1);
@@ -32,8 +34,12 @@ int		ft_isupper(int c);
 int		ft_islower(int c);
 
 
-#define min -4660
-#define max 4661
+#define min -460
+#define max 401
+
+/*
+** On linux (or at least bash for windows with ubuntu), the libc does segfault with non chars even if man says it can takes int
+*/
 
 static void fill_with_shit(char *str, size_t size)
 {
@@ -45,9 +51,6 @@ static void fill_with_shit(char *str, size_t size)
         }
         str[i] = 0;
 }
-
-
-
 
 
 #ifdef __linux__ // c dégeu mé osef
@@ -312,6 +315,21 @@ int main(void)
 	printf("%s\n", "Finished test for ft_strlen");
 	checkintegrity(str, str2, 11);
 
+		//////////////////////////////STRLEN2//////////////////////////////
+	i = 0;
+
+	while (i < 500)
+	{
+		fill_with_shit(str,i);
+		fill_with_shit(str2,i); // only used for integrity
+		if (strlen(str) != ft_strlen2(str))
+			printf("\e[31mFail on ft_strlen2(%i) expected : %lu  but got %lu n\e[0m", i, strlen(str) , ft_strlen2(str));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_strlen2");
+	checkintegrity(str, str2, 11);
+
+
 	//////////////////////////////MEMSET//////////////////////////////
 	i = 2;
 
@@ -374,19 +392,24 @@ int main(void)
 	checkintegrity(str, str2, 13);
 
 	//////////////////////////////STRDUP//////////////////////////////
-	char ololmdr[] = "QUELAUN AURAY VU MA BROSS A DEN?????????????????";
-	printf("%s\n","step 1");
-	char *bitoe = ft_strdup(ololmdr);
-	printf("%s\n","step 1.2");
-	if (strcmp(strdup(ololmdr), bitoe) != 0)
-		printf("%s\n", "fail sur ft_strdup");
-	printf("%s\n","step 2");
-	if (bitoe[strlen(ololmdr)] != 0)
-		printf("%s %c\n", "end of it is not 0, expected 0, got ", bitoe[strlen(ololmdr)]);
-	printf("%s\n","step 3");
+
+
+	while (i < max)
+	{
+		char ololmdr[] = "QUELAUN AURAY VU MA BROSS A DEN?????????????????";
+		char *bitoe = ft_strdup(ololmdr);
+		if (strcmp(strdup(ololmdr), bitoe) != 0)
+			printf("%s\n", "fail sur ft_strdup");
+		if (bitoe[strlen(ololmdr)] != 0)
+			printf("%s %c\n", "end of it is not 0, expected 0, got ", bitoe[strlen(ololmdr)]);
+	
+		i++;
+	}
 	printf("%s\n", "Finished test for ft_strdup");
 
-	printf("%lu %lu\n",ft_strlen(bitoe), ft_strlen(bitoe) );
+	//ft_puts("lol mdr");
 
+	char b[] = "lol";
+	ft_puts(b);
 	return (1);
 }
