@@ -1,5 +1,5 @@
 
-NAME			= libftasm.a
+NAME			= libfts.a
 
 LIN_COMPILER	= nasm -f elf64 -g 
 
@@ -54,7 +54,7 @@ fclean: clean
 re: fclean 
 	$(MAKE) all
 
-test:
+test: all
 	clang main.c $(NAME) -o test
 
 
