@@ -1,6 +1,8 @@
 ; syscall 0x2000003 read(int fd rdi, user_addr_t cbuf rsi , user_size_t nbyte rdx);
 ; syscall 0x2000004 write(int fd rdi, user_addr_t cbuf rsi , user_size_t nbyte rdx);
 
+; ft_cat(int fd)
+
 %define BUF_LEN		4096
 
 section .bss
