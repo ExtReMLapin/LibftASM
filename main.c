@@ -18,7 +18,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-char* 	ft_puts( char* rdi);
+int 	ft_puts( char* rdi);
 
 /* PART 2 */
 size_t	ft_strlen(const char *s);
@@ -422,7 +422,7 @@ int main(void)
 
 
 	char *olol5 = NULL;
-		printf(	" %i %i \n", puts(olol5) ,ft_puts(olol5));
+	printf(	"Check return -> %i == %i ?\n", puts(olol5) ,ft_puts(olol5));
 
 
 	return (1);
