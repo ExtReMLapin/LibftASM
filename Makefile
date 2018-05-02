@@ -7,23 +7,27 @@ MAC_COMPILER	= nasm -f macho64 -g
 
 LIB_SRC_DIR		= ./src
 
-LIB_SRC			=	ft_isdigit.s \
-					ft_tolower.s \
-					ft_toupper.s \
-					ft_islower.s \
-					ft_isupper.s \
+LIB_SRC			=	ft_bzero.s \
+					ft_strcat.s \
 					ft_isalpha.s \
-					ft_isprint.s \
+					ft_isdigit.s \
 					ft_isalnum.s \
 					ft_isascii.s \
-					ft_bzero.s \
+					ft_isprint.s \
+					ft_toupper.s \
+					ft_tolower.s \
+					ft_puts.s \
 					ft_strlen.s \
-					ft_strlen2.s \
-					ft_strcat.s \
 					ft_memset.s \
 					ft_memcpy.s \
 					ft_strdup.s \
-					ft_puts.s
+					ft_strlen2.s \
+					ft_cat.s \
+					ft_islower.s \
+					ft_isupper.s \
+					
+
+					
 
 
 LIB_OBJ		= $(LIB_SRC:.s=.o)

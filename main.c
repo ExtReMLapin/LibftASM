@@ -28,6 +28,7 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 char	*ft_strdup(const char *s1);
 
 /* PART 3*/
+int 	ft_cat(int fd);
 
 /* BONUS */
 int		ft_isupper(int c);
@@ -53,6 +54,7 @@ static void fill_with_shit(char *str, size_t size)
         }
         str[i] = 0;
 }
+
 
 
 #ifdef __linux__ // c dégeu mé osef
@@ -423,6 +425,30 @@ int main(void)
 
 	char *olol5 = NULL;
 	printf(	"Check return -> %i == %i ?\n", puts(olol5) ,ft_puts(olol5));
+
+
+	printf("Batterie de tests nazis pour ft_cat avec des fd_bidon, de %i à %i puis avec des vrais fichiers\n",min, max);
+
+	i = min;
+	while (i < max)
+	{
+
+		
+		if (i == 0 || i == 1 || i == 2)
+			printf("Skipping file description %i cuz these values are taken by the system/shell \n",i );
+		else
+		{
+			printf("Test fd = %i\n", i);
+			ft_cat(i);
+		}
+		i++;
+	}
+
+	int biteo = open("libftasm.a", O_RDONLY);
+	ft_cat(biteo);
+
+
+	
 
 
 	return (1);
