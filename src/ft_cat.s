@@ -4,7 +4,7 @@
 %define BUF_LEN		4096
 
 section .bss
-BUF:	resb BUF_LEN	; comme un char buff[4096] ; on pourait aussi l'allouer avec le syscall mmap
+BUF:	resb BUF_LEN	; like a char buff[4096] ; i could also alloc it usign the mmap syscall
 
 section .text
 	global _ft_cat
@@ -15,26 +15,25 @@ _ft_cat:
 	jle .byebye
 
 .loop:
-	mov rdi, r12 ; on remet rdi comme il était psk il va etre overwrite apres
-;; 	mov rsi, BUF	; meme prob que avec ft_puts, decalage de 1 byte donc segfault 
+	mov rdi, r12 ; restore RDI from R12 because if it's relooping, it was overwrote when using syscals
 	lea rsi, [rel BUF]
 	mov rdx, BUF_LEN
-	mov rax, 0x2000003 ; call _read
+	mov rax, 0x2000003 ; calling read
 	syscall ; read(rdi, rsi, rdx)
 	jc .byebye
     js .byebye
-	cmp rax, 0	; si on a zero alors on est à la fin, si on a -1, ca fail
+	cmp rax, 0	; if read returned zero, we're at the end of the file, if it returned -1, it could not read the file descriptor
 	jle .byebye
 
-	mov rdi, 1		; la sortie 1
-	lea rsi, [rel BUF]	; et on pop le buffer danslequel on a ecris
+	mov rdi, 1		; fd = 1 is for console output
+	lea rsi, [rel BUF]	; and we're readding from the buffer that read wrote in
 
-	;read () RETURN VALUES
+	;read () -> RETURN VALUES
     ; If successful, the number of bytes actually read is returned.
 	mov rdx, rax		;^^^^^^
-	mov rax, 0x2000004 	; comme ft_puts quoi
-	syscall 			; write (1, [rel BUF], ce qu'a return read)
-	cmp rax, -1			; si ret -1 alors ca a fail
+	mov rax, 0x2000004 	; 
+	syscall 			; write (1, [rel BUF], what read syscall returned)
+	cmp rax, -1			; if it returned -1 then it failed
 	je .byebye
 	jmp .loop
 
