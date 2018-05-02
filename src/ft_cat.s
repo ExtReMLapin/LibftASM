@@ -21,7 +21,7 @@ _ft_cat:
 	mov rax, 0x2000003 ; calling read
 	syscall ; read(rdi, rsi, rdx)
 	jc .byebye
-    js .byebye
+	js .byebye
 	cmp rax, 0	; if read returned zero, we're at the end of the file, if it returned -1, it could not read the file descriptor
 	jle .byebye
 
