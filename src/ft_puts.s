@@ -17,7 +17,6 @@ section .data
 section .text
 	global _ft_puts
 	extern _ft_strlen2
-	extern _write
 
 _ft_puts:
 	enter 16, 0
@@ -40,7 +39,7 @@ _ft_puts:
 	cmp rax, EOF
 	je .fail
 
-	;now adding a \n at the and of the string
+	;now adding a \n at the end of the string
 	mov rsi, NL			; rsi = string that was in ft_puts parameter
 	mov rdi, 1			; \n len = 1 , amirite ???
 	mov rdx, 1			; rdx = string length that was in parameter
