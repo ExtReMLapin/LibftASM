@@ -14,7 +14,7 @@ section .text
 _ft_cat:
 	mov r12, rdi
 	cmp rdi, 0
-	jle .byebye
+	jl .byebye
 
 .loop:
 	mov rdi, r12 ; restore RDI from R12 because if it's relooping, it was overwrote when using syscals

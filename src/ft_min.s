@@ -9,11 +9,11 @@ _ft_min:
 	jb .rdiset
 	ret
 
-.rdiset
+.rdiset:
 	mov rax, rdi
 	ret
 
-.rsiset
+.rsiset:
 	mov rax, rsi
 	ret
 	

@@ -9,11 +9,11 @@ _ft_max:
 	jb .rsiset
 	ret
 
-.rdiset
+.rdiset:
 	mov rax, rdi
 	ret
 
-.rsiset
+.rsiset:
 	mov rax, rsi
 	ret
 	
