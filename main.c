@@ -20,6 +20,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int 	ft_puts( char* rdi);
 
+
 /* PART 2 */
 size_t	ft_strlen(const char *s);
 
@@ -34,6 +35,8 @@ int 	ft_cat(int fd);
 int		ft_isupper(int c);
 int		ft_islower(int c);
 size_t	ft_strlen2(const char *s); // ?
+int		ft_min(int rdi, int rsi);
+int		ft_max(int rdi, int rsi);
 
 
 
@@ -69,8 +72,6 @@ void checkintegrity(char *str1, char* str2, int testid)
 	}
 
 }
-
-
 
 
 int main(void)
@@ -203,28 +204,7 @@ int main(void)
 
 
 
-	//////////////////////////////ISUPPER//////////////////////////////
-	i = min;
-	while (i < max)
-	{
-		if (isupper(i) != ft_isupper(i))
-			printf("\e[31mFail on ft_isupper(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isupper(i) , ft_isupper(i));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_isupper");
-	checkintegrity(str, str2, 9);
-
-	//////////////////////////////ISLOWER//////////////////////////////
-	i = min;
-	while (i < max)
-	{
-		if (islower(i) != ft_islower(i))
-			printf("\e[31mFail on ft_islower(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, islower(i) , ft_islower(i));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_islower");
-	checkintegrity(str, str2, 10);
-
+	
 
 	//////////////////////////////STRLEN//////////////////////////////
 	i = 0;
@@ -240,19 +220,6 @@ int main(void)
 	printf("%s\n", "Finished test for ft_strlen");
 	checkintegrity(str, str2, 11);
 
-		//////////////////////////////STRLEN2//////////////////////////////
-	i = 0;
-
-	while (i < 500)
-	{
-		fill_with_shit(str,i);
-		fill_with_shit(str2,i); // only used for integrity
-		if (strlen(str) != ft_strlen2(str))
-			printf("\e[31mFail on ft_strlen2(%i) expected : %lu  but got %lu n\e[0m", i, strlen(str) , ft_strlen2(str));
-		i++;
-	}
-	printf("%s\n", "Finished test for ft_strlen2");
-	checkintegrity(str, str2, 11);
 
 
 	//////////////////////////////MEMSET//////////////////////////////
@@ -331,8 +298,6 @@ int main(void)
 		i++;
 	}
 
-
-
 	printf("%s\n", "Finished test for ft_strdup");
 	printf("%s\n", "Les lignes suivantes sont-elles identiques ?");
 	char olol[] = "mdr                                                                     ";
@@ -365,12 +330,66 @@ int main(void)
 		i++;
 	}
 
-	int biteo = open("libftasm.a", O_RDONLY);
+	printf("%s\n", "Checking real file :");
+	int biteo = open("libfts.a", O_RDONLY);
+	ft_cat(biteo);
+
+	printf("%s\n", "Checking shit file");
+	biteo = open("libftfgsdgsdfgdasm.a", O_RDONLY);
 	ft_cat(biteo);
 
 
-	
+	//////////////////////////////ISUPPER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (isupper(i) != ft_isupper(i))
+			printf("\e[31mFail on ft_isupper(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, isupper(i) , ft_isupper(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_isupper");
+	checkintegrity(str, str2, 9);
 
+	//////////////////////////////ISLOWER//////////////////////////////
+	i = min;
+	while (i < max)
+	{
+		if (islower(i) != ft_islower(i))
+			printf("\e[31mFail on ft_islower(%i) expected : 0x%08x  but got 0x%08x \n\e[0m", i, islower(i) , ft_islower(i));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_islower");
+	checkintegrity(str, str2, 10);
+
+
+	printf("Smaller between 15 and 128 -> %i \n", ft_min(15, 128));
+	printf("Smaller between 128 and 15 -> %i \n", ft_min(128, 15));
+	printf("Smaller between 15 and 15 -> %i \n", ft_min(15, 15));
+
+	printf("Smaller between -15 and -128 -> %i \n", ft_min(-15, -128));
+	printf("Smaller between -128 and -15 -> %i \n", ft_min(-128, -15));
+
+
+	printf("Greatest between 15 and 128 -> %i \n", ft_max(15, 128));
+	printf("Greatest between 128 and 15 -> %i \n", ft_max(128, 15));
+	printf("Greatest between 15 and 15 -> %i \n", ft_max(15, 15));
+
+	printf("Greatest between -15 and -128 -> %i \n", ft_max(-15, -128));
+	printf("Greatest between -128 and -15 -> %i \n", ft_max(-128, -15));
+
+			//////////////////////////////STRLEN2//////////////////////////////
+	i = 0;
+
+	while (i < 500)
+	{
+		fill_with_shit(str,i);
+		fill_with_shit(str2,i); // only used for integrity
+		if (strlen(str) != ft_strlen2(str))
+			printf("\e[31mFail on ft_strlen2(%i) expected : %lu  but got %lu n\e[0m", i, strlen(str) , ft_strlen2(str));
+		i++;
+	}
+	printf("%s\n", "Finished test for ft_strlen2");
+	checkintegrity(str, str2, 11);
 
 	return (1);
 }

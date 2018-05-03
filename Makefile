@@ -1,9 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pfichepo <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/05/03 09:34:53 by pfichepo          #+#    #+#              #
+#    Updated: 2018/05/03 09:34:57 by pfichepo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 NAME			= libfts.a
 
 LIN_COMPILER	= nasm -f elf64 -g 
 
-MAC_COMPILER	= nasm -f macho64 -g 
+MAC_COMPILER	= nasm -f macho64
 
 LIB_SRC_DIR		= ./src
 
@@ -25,6 +37,8 @@ LIB_SRC			=	ft_bzero.s \
 					ft_cat.s \
 					ft_islower.s \
 					ft_isupper.s \
+					ft_min.s \
+					ft_max.s
 					
 
 					
