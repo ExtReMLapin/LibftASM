@@ -4,6 +4,7 @@ section .text
 	global _ft_memcpy
 
 _ft_memcpy:
+	enter 16, 0
 	push rdi			; backup rdi qu'on va return dans rax à la fin
 	cld					; kom dab
 	mov rcx, rdx		; on move rdx (size) dans rcx paskeu rep check rcx
@@ -12,4 +13,5 @@ _ft_memcpy:
 
 end:
 	pop rax
+	leave
 	ret

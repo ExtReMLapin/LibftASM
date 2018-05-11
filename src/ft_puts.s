@@ -41,7 +41,7 @@ _ft_puts:
 	je .fail
 
 	;now adding a \n at the end of the string
-	mov rsi, [rel NL]	; rsi = string that was in ft_puts parameter
+	lea rsi, [rel NL]	; rsi = string that was in ft_puts parameter
 	mov rdi, 1			; sortie
 	mov rdx, 1			; rdx = string length that was in parameter
 	mov rax, 0x2000004
@@ -67,7 +67,7 @@ _ft_puts:
 	je .fail
 
 	;now adding a \n at the and of the string
-	mov rsi, [rel NL]	; rsi = string that was in ft_puts parameter
+	lea rsi, [rel NL]	; rsi = string that was in ft_puts parameter
 	mov rdi, 1			; \n len = 1 , amirite ???
 	mov rdx, 1			; rdx = string length that was in parameter
 	mov rax, 0x2000004

@@ -306,7 +306,6 @@ int main(int ac, char **av)
 	char olol[] = "mdr                                                                     ";
 	puts(olol);
 	ft_puts(olol);
-
 	char olol2[] = "sdfjsdfj;asdfja;sdjfapiwejfp[iwejfpad;zsdz;'sdcz's;dfasdf4asd89fa4ds+fasdf";
 	puts(olol2);
 	ft_puts(olol2);
