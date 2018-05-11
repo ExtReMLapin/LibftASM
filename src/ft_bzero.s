@@ -16,3 +16,4 @@ _ft_bzero:
 
 .end:
 		ret					;return
+		

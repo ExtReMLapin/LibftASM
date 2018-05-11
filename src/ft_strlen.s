@@ -3,7 +3,6 @@
 section .text
 	global _ft_strlen
 
-
 _ft_strlen:
 					; repne bosse sur rcx
 					; scasb compare al avec rdi et bouge rdi

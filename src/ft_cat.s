@@ -35,10 +35,10 @@ _ft_cat:
 	mov rdx, rax		;^^^^^^
 	mov rax, 0x2000004 	; 
 	syscall 			; write (1, [rel BUF], what read syscall returned)
+	jc .byebye
 	cmp rax, -1			; if it returned -1 then it failed
 	je .byebye
 	jmp .loop
 
 .byebye:
 	ret
-	

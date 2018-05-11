@@ -1,8 +1,7 @@
 ;void	*ft_memcpy(void *restrict rdi, const void *restrict rsi, size_t rdx);
 
-
-global _ft_memcpy
-	section .text
+section .text
+	global _ft_memcpy
 
 _ft_memcpy:
 	push rdi			; backup rdi qu'on va return dans rax à la fin

@@ -73,9 +73,12 @@ void checkintegrity(char *str1, char* str2, int testid)
 
 }
 
+#include <fcntl.h>
 
-int main(void)
+int main(int ac, char **av)
 {
+
+
 
 
 
@@ -318,15 +321,8 @@ int main(void)
 	i = min;
 	while (i < max)
 	{
-
-		
-		if (i == 0 || i == 1 || i == 2)
-			printf("Skipping file description %i cuz these values are taken by the system/shell \n",i );
-		else
-		{
-			printf("Test fd = %i\n", i);
-			ft_cat(i);
-		}
+		printf("Test fd = %i\n", i);
+		ft_cat(i);
 		i++;
 	}
 
@@ -391,5 +387,11 @@ int main(void)
 	printf("%s\n", "Finished test for ft_strlen2");
 	checkintegrity(str, str2, 11);
 
-	return (1);
+	ft_cat(0);
+	ft_cat(open(__FILE__, O_RDONLY));
+	ft_cat(open(av[0], O_RDONLY));
+	ft_cat(-42);
+	(void)ac;
+	return (0);
+
 }

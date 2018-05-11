@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME			= libfts.a
 
 LIN_COMPILER	= nasm -f elf64 -g 
@@ -40,15 +39,9 @@ LIB_SRC			=	ft_bzero.s \
 					ft_min.s \
 					ft_max.s
 					
-
-					
-
-
 LIB_OBJ		= $(LIB_SRC:.s=.o)
 
 LIB_SRCS	= $(addprefix $(LIB_SRC_DIR)/, $(LIB_SRC))
-
-NEWLINE		= @echo ""
 
 all : $(NAME)
 
@@ -69,7 +62,7 @@ re: fclean
 	$(MAKE) all
 
 test: all
-	clang main.c $(NAME) -o test
+	gcc -Wall -Werror -Wextra main.c $(NAME) -o test
 
 
 .PHONY: all clean fclean re test
