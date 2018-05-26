@@ -11,8 +11,8 @@ _ft_strlen:
 					; rpne -> RePeat while Not Equal
 					; s = rdi
     xor rcx, rcx	; rcx = 0 ; on utilise rcx et pas rbx car repne scasb agit dessus
-    cmp rdi, 0x0 	; if (s == NULL)
-    jz end			;	goto end
+    ;cmp rdi, 0x0 	; if (s == NULL)
+    ;jz end			;	goto end
     				; juste pour le debut
 
     not rcx 		; rcx = ~rcx (rcx = -1)
